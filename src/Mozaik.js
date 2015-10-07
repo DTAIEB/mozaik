@@ -14,7 +14,7 @@ class Mozaik {
             port: config.port
         };
 
-        this.config.appTitle         = this.config.appTitle      || 'Mozaïk';
+        this.config.appTitle         = this.config.appTitle      || 'Mozaik';
         this.config.assetsBaseUrl    = this.config.assetsBaseUrl || '';
         this.config.useWssConnection = !!this.config.useWssConnection;
 
@@ -24,8 +24,8 @@ class Mozaik {
         this.bus = new Bus(this);
     }
 
-    startServer() {
-        require('./server')(this);
+    startServer(app) {
+        require('./server')(this, app);
     }
 
     /**

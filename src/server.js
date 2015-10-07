@@ -7,11 +7,11 @@ var _       = require('lodash');
 /**
  * @param {Mozaik} mozaik
  */
-module.exports = function (mozaik) {
+module.exports = function (mozaik, app) {
 
     var config = mozaik.serverConfig;
 
-    var app = express();
+    app = app || express();
 
     mozaik.logger.info(chalk.yellow('serving static contents from ' + mozaik.baseDir + 'build'));
     app.use(express.static(mozaik.baseDir + '/build'));
@@ -37,7 +37,7 @@ module.exports = function (mozaik) {
     });
 
     var server = app.listen(config.port, function () {
-        mozaik.logger.info(chalk.yellow('Mozaïk server listening at http://' + config.host + ':' + config.port));
+        mozaik.logger.info(chalk.yellow('Mozaik server listening at http://' + config.host + ':' + config.port));
     });
 
     var WebSocketServer = require('ws').Server;
