@@ -45,7 +45,7 @@ module.exports = function (mozaik, app) {
 
     var currentClientId = 0;
 
-    wss.on('connection', function (ws) {
+    wss.on('connection/', function (ws) {
         var clientId = ++currentClientId;
 
         mozaik.bus.addClient(ws, clientId);
