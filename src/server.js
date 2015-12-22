@@ -3,6 +3,7 @@ var swig    = require('swig');
 var chalk   = require('chalk');
 var path    = require('path');
 var _       = require('lodash');
+var fs     	= require('fs');
 
 /**
  * @param {Mozaik} mozaik
@@ -18,7 +19,15 @@ module.exports = function (mozaik, app) {
 
     app.engine('html', swig.renderFile);
     app.set('view engine', 'html');
-    app.set('views', path.join(mozaik.rootDir, 'templates'));
+    //Check if the host app is providing custom templates
+    var customTemplatesPath = path.join( path.join( mozaik.baseDir, mozaik.config.src ), 'templates');
+    if (fs.existsSync(customTemplatesPath)) {
+    	console.log("Using custom templates: ", customTemplatesPath);
+        app.set('views', customTemplatesPath );
+    } else {
+    	app.set('views', path.join(mozaik.rootDir, 'templates'));
+    }   
+    
     app.set('view cache', false);
     swig.setDefaults({
         cache: false
