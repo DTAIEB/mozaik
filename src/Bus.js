@@ -152,7 +152,7 @@ class Bus {
      * @param {Object}   params
      */
     processApiCall(id, callFn, params) {
-        this._mozaik.logger.info(`Calling "${ id }"`);
+        //this._mozaik.logger.info(`Calling "${ id }"`);
 
         callFn(params)
             .then(data => {
