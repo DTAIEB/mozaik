@@ -10,9 +10,6 @@
     "name": "Raphaël Benitte",
     "url": "https://github.com/plouc"
   },
-  "engines": {
-    "node": "0.12.x"
-  },
   "license": "MIT",
   "homepage": "https://github.com/plouc/mozaik",
   "main": "src/Mozaik.js",
